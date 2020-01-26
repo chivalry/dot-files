@@ -1,0 +1,151 @@
+set nocompatible
+filetype plugin indent on
+
+packadd minpac
+call minpac#init()
+
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-commentary')
+
+call minpac#add('SirVer/ultisnips')
+call minpac#add('honza/vim-snippets')
+
+call minpac#add('godlygeek/tabular')
+
+call minpac#add('Raimondi/delimitMate')
+
+call minpac#add('altercation/vim-colors-solarized')
+
+call minpac#add('sukima/xmledit')
+
+call minpac#add('vim-scripts/closetag.vim')
+call minpac#add('vim-scripts/applescript.vim')
+
+call minpac#add('mklabs/vim-markdown-helpfile')
+
+call minpac#add('chivalry/filemaker.vim')
+
+command! PackUpdate call minpac#update()
+command! PackClean call minpack#clean()
+
+nnoremap <C-p> :<C-u>FZF<CR>
+
+"--------------------------------------------------------------------------------
+" File types
+
+autocmd BufNewFile,BufRead *.html set filetype=htmldjango
+
+"--------------------------------------------------------------------------------
+" Application options
+
+set statusline=\ %l/%L        " line x of y
+set statusline+=\ [%p%%]      " percent through file
+set statusline+=\ Col:%v      " column number
+set statusline+=\ Buf:#%n     " buffer number
+set statusline+=\ Char:%b
+set statusline+=\ %m          " modified flag
+set statusline+=\ %r          " read-only flag
+set statusline+=%#identifier#
+set statusline+=\ %t          " filename
+set statusline+=%#statement#
+set statusline+=\ %y          " filetype
+set laststatus=2
+
+let mapleader = "-"
+let maplocalleader = "\\"
+
+" Allows modified files to be hidden but remain in a buffer.
+set hidden
+
+set history=1000
+
+" Commands for editing and executing the .vimrc file.
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+set guifont=Menlo:h16
+colorscheme afterglow
+
+"--------------------------------------------------------------------------------
+" Display settings
+
+" Show line numbers
+set number
+
+" Wraps long lines around by breaking words in the middle.
+set wrap
+
+" Changes wrap behavior to wrap on the contents of the breakat variable.
+set linebreak
+
+" Show invisible characters. Disable because it overrides linebreak. Perhaps
+" later set list based on filetype, for example, only for markdown and plain
+" text.
+" set list
+
+" What to show the invisibles as.
+set listchars=tab:▸\ ,trail:·
+" eol:¬,
+
+" How will tabs work?
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set cursorline
+
+"--------------------------------------------------------------------------------
+" Search options
+
+" Ignore case in searches unless a capital letter is included.
+set ignorecase
+set smartcase
+
+" Show partial matches while typing in a search term.
+set incsearch
+
+" Highlight search results. Disabled until an easy way to remove highlights is found.
+set hlsearch
+
+" Turn off the search highlighting automatically by pressing <esc>
+nnoremap <esc> :nohlsearch<return><esc>
+
+"--------------------------------------------------------------------------------
+" Mappings
+
+" Indent and outdent.
+nnoremap <d-[> <<
+nnoremap <d-]> >>
+vnoremap <d-[> <gv
+vnoremap <d-]> >gv
+
+nnoremap <leader>ew :edit <c-r>=expand("%:p:h")."/"<cr>
+nnoremap <leader>sw :split <c-r>=expand("%:p:h")."/"<cr>
+nnoremap <leader>vw :vsplit <c-r>=expand("%:p:h")."/"<cr>
+nnoremap <leader>tw :tabedit <c-r>=expand("%:p:h")."/"<cr>
+
+nnoremap <leader>fm :set filetype=fmcalc<cr>
+
+nnoremap <c-left>   <c-w>h
+nnoremap <c-down>   <c-w>j
+nnoremap <c-up>     <c-w>k
+nnoremap <c-right>  <c-w>l
+
+nnoremap j gj
+vnoremap j gj
+nnoremap k gk
+vnoremap k gk
+nnoremap $ g$
+vnoremap $ g$
+nnoremap 0 g0
+vnoremap 0 g0
+nnoremap ^ g^
+vnoremap ^ g^
+
+
