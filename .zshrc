@@ -19,7 +19,7 @@ alias show="open -R"
 alias fr="pipenv run flask run"
 alias hr="heroku local -f Procfile.dev"
 alias pips="pipenv shell"
-alias pipjyp="pipenv run jupyter notebook"
+alias pipjyp="pipenv run jupyter notebook -y --no-browser"
 
 if [[ $(uname) == Darwin ]]
 then
